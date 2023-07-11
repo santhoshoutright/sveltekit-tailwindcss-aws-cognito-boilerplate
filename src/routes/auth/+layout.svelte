@@ -41,10 +41,13 @@
 
 			{pages[$page.url.pathname]}
 		</div>
-		<!-- <div>
-			<a href="/auth/login" class="btn btn-secondary">Login</a>
-			<a href="/auth/signup" class="btn btn-secondary">Sign Up</a>
-		</div> -->
+		<div>
+			{#if $page.url.pathname == '/auth/signup'}
+				<a href="/auth/login" class="btn btn-secondary">Login</a>
+			{:else}
+				<a href="/auth/signup" class="btn btn-secondary">Sign Up</a>
+			{/if}
+		</div>
 	</div>
 
 	<div class="mx-auto rounded bg-neutral flex min-h-[70vh]">
