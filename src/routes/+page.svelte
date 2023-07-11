@@ -4,9 +4,16 @@
 </script>
 
 <div class="p-10 mx-auto max-w-7xl">
-	<h1 class="bg-primary text-white p-8 rounded-xl text-3xl font-bold mb-4 text-center">
-		Welcome to TSOC development
-	</h1>
+	<div class="bg-primary text-white p-8 rounded-xl text-3xl font-bold mb-4 flex justify-between items-center">
+		<div>
+			Welcome to TSOC development		
+		</div>
+		<div>
+			<a href="/auth/login" class="btn btn-secondary">Login</a>
+			<a href="/auth/signup" class="btn btn-secondary">Sign Up</a>
+		</div>
+	</div>
+
 	<p class="mb-4">
 		Visit <a class="bg-primary text-white hover:underline p-1" href="https://kit.svelte.dev"
 			>kit.svelte.dev</a
