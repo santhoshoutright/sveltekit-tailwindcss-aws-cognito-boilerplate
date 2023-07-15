@@ -1,13 +1,27 @@
 <script>
+	import { browser } from '$app/environment';
+
 	// @ts-nocheck
+	
+	// import awsconfig from '$lib/aws-config';
+	// import { Amplify, Auth } from 'aws-amplify';
+	
 
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 
+	export let data;
 	let pages = {
 		'/auth/signup': 'Sign Up',
 		'/auth/login': 'Login'
 	};
+
+	// Amplify.configure(awsconfig);
+
+    // You can get the current config object
+    // const currentConfig = Auth.configure();
+	
+	// console.log("cognito : ", dataa.cognito);
 </script>
 
 <div class="p-10 mx-auto max-w-7xl">

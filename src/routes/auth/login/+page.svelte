@@ -1,10 +1,44 @@
+<script context="module">
+	import { Auth } from 'aws-amplify';
+
+</script>
+
 <script>
+	// @ts-nocheck
+
 	import SuperDebug from 'sveltekit-superforms/client/SuperDebug.svelte';
 	import { superForm } from 'sveltekit-superforms/client';
+	import { browser } from '$app/environment';
+
 	export let data;
 	// Client API:
-	const { form, errors, delayed } = superForm(data.form);
+	const { form, errors, delayed, message } = superForm(data.form);
+
+	const signIn = async (username, password) => {
+		
+		// console.log('username : ', username);
+		// console.log('password : ', password);
+		try {
+			const user = await Auth.signIn(username, password);
+			console.log('user : ', user);
+		} catch (error) {
+			console.log('error signing in', error);
+		}
+	};
+
+	$: if ($message?.status == 'success') {
+		signIn($form.email, $form.password);
+		console.log('Form : ', $form);
+		console.log('data : ', data);
+	}
 </script>
+
+{#if $message?.status == 'failed' && $message.content}
+	<p class="bg-red-100 p-4 text-red-400 text-xs font-semibold rounded">{$message.content}</p>
+{/if}
+{#if $message?.status == 'success' && $message.content}
+	<p class="bg-green-100 p-4 text-green-400 text-xs font-semibold rounded">{$message.content}</p>
+{/if}
 
 <SuperDebug data={$form} />
 
