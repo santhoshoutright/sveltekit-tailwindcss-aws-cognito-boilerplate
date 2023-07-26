@@ -1,6 +1,6 @@
 <script context="module">
 	import { Auth } from 'aws-amplify';
-
+	import { CognitoHostedUIIdentityProvider } from '@aws-amplify/auth';
 </script>
 
 <script>
@@ -22,7 +22,7 @@
 			const user = await Auth.signIn(username, password);
 			console.log('user : ', user);
 		} catch (error) {
-			console.log('error signing in', error);
+			console.log('error signing in', error); 
 		}
 	};
 
@@ -70,4 +70,9 @@
 		{/if}
 		Login
 	</button>
+
+	<!-- <button class="btn btn-primary" on:click|preventDefault={() => Auth.federatedSignIn({provider: CognitoHostedUIIdentityProvider.Google })}>
+	
+		Google Login
+	</button> -->
 </form>

@@ -16,10 +16,12 @@ const schema = z.object({
 		)
 });
 
-export const load = async () => {
+export const load = async ({request, params}) => {
 	// Server API:
 	const form = await superValidate(schema);
 
+	console.log("request : ", request);
+	console.log("params : ", params);
 	// Always return { form } in load and form actions.
 	return { form };
 };
